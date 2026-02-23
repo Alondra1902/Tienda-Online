@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Tech Store</title>
+    <style>
+        :root { --primary: #3b82f6; --accent: #06b6d4; --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; }
+        nav { background: #1e293b; padding: 1rem; border-bottom: 1px solid #334155; }
+        nav ul { display: flex; justify-content: center; list-style: none; gap: 20px; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .container { max-width: 400px; margin: 50px auto; background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #334155; }
+        h1 { text-align: center; color: var(--accent); }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        input { padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; }
+        button { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        button:disabled { background: #475569; cursor: not-allowed; }
+        label { font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="registro.html">Registro</a></li>
+            <li><a href="quienes.html">Quiénes somos</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+            <li><a href="busqueda.html">Búsqueda</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1>Crear Cuenta</h1>
+        <form id="formRegistro">
+            <input type="text" id="nombre" placeholder="Nombre completo" required>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <input type="date" id="fecha" required>
+            <input type="tel" id="telefono" placeholder="Teléfono (10 dígitos)" required>
+            <label><input type="checkbox" id="terminos"> Acepto los términos</label>
+            <button type="submit" id="btnRegistro" disabled>Registrarse</button>
+            <p id="mensaje" style="text-align: center;"></p>
+        </form>
+    </main>
+    <script src="js/registro.js"></script>
+</body>
+</html>

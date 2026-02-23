@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | Tech Store</title>
+    <style>
+        /* ESTILOS INTEGRADOS PARA ASEGURAR EL DISEÑO */
+        :root {
+            --primary: #3b82f6;
+            --accent: #06b6d4;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: #1e293b;
+            padding: 1rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-item {
+            background: var(--card);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .card-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            background: white; 
+            border-radius: 10px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="registro.html">Registro</a></li>
+            <li><a href="quienes.html">Quiénes somos</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="carrito.html">Carrito (<span id="contador">0</span>)</a></li>
+            <li><a href="busqueda.html">Búsqueda</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h1 style="text-align: center; color: var(--accent);">Catálogo Premium</h1>
+
+    <div class="grid-main">
+        <article class="card-item">
+            <img src="img/laptop.jpg" alt="Laptop">
+            <h3>Victus Gamer RTX 3050</h3>
+            <p style="color: #94a3b8;">Potencia pura para tus juegos.</p>
+            <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 15px;">
+                <span style="font-size: 1.2rem; font-weight: bold;">$15,000</span>
+                <button class="agregar" data-nombre="Victus Gamer RTX 3050" data-precio="15000">Añadir</button>
+            </div>
+        </article>
+
+        <article class="card-item">
+            <img src="img/Iphone 15.jpg" alt="iPhone">
+            <h3>iPhone 15 Pro</h3>
+            <p style="color: #94a3b8;">Titanio. Potencia. Futuro.</p>
+            <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 15px;">
+                <span style="font-size: 1.2rem; font-weight: bold;">$20,000</span>
+                <button class="agregar" data-nombre="iPhone 15 Pro" data-precio="20000">Añadir</button>
+            </div>
+        </article>
+
+        <article class="card-item">
+            <img src="img/nothing.jpg" alt="Earbuds">
+            <h3>Nothing Ear (3)</h3>
+            <p style="color: #94a3b8;">Sonido transparente y premium.</p>
+            <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 15px;">
+                <span style="font-size: 1.2rem; font-weight: bold;">$2,800</span>
+                <button class="agregar" data-nombre="Nothing Ear (3)" data-precio="2800">Añadir</button>
+            </div>
+        </article>
+    </div>
+</main>
+
+<script>
+    // LÓGICA DE CARRITO INTEGRADA PARA FUNCIONAR CON LA LLAVE 'carrito_tech'
+    const actualizarContador = () => {
+        const carrito = JSON.parse(localStorage.getItem("carrito_tech")) || [];
+        const contador = document.getElementById("contador");
+        if(contador) contador.textContent = carrito.length;
+    };
+
+    document.querySelectorAll(".agregar").forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Leemos lo que ya existe
+            let carrito = JSON.parse(localStorage.getItem("carrito_tech")) || [];
+            
+            // Creamos el producto con los datos del botón
+            const nuevoProducto = {
+                nombre: btn.dataset.nombre,
+                precio: parseFloat(btn.dataset.precio)
+            };
+            
+            // Guardamos
+            carrito.push(nuevoProducto);
+            localStorage.setItem("carrito_tech", JSON.stringify(carrito));
+            
+            // Actualizamos el número visual del menú y avisamos
+            actualizarContador();
+            alert(`¡Excelente elección! ${nuevoProducto.nombre} se añadió a tu carrito.`);
+        });
+    });
+
+    // Cargar contador al iniciar la página
+    actualizarContador();
+</script>
+
+</body>
+</html>

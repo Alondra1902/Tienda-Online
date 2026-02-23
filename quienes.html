@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Tech Store</title>
+    <style>
+        :root { --primary: #3b82f6; --accent: #06b6d4; --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; }
+        nav { background: #1e293b; padding: 1rem; border-bottom: 1px solid #334155; }
+        nav ul { display: flex; justify-content: center; list-style: none; gap: 20px; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px; }
+        .grid-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .info-box { background: var(--card); padding: 25px; border-radius: 15px; border-left: 5px solid var(--accent); }
+        h1 { text-align: center; color: var(--accent); margin-bottom: 30px; font-size: 2.5rem; }
+        h3 { color: var(--primary); margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: var(--card); border-radius: 10px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #334155; }
+        th { background: #334155; color: var(--accent); }
+        .btn-accion { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; display: block; margin: 20px auto; font-weight: bold; font-size: 1rem; transition: 0.3s; }
+        .btn-accion:hover { background: var(--accent); transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="registro.html">Registro</a></li>
+            <li><a href="quienes.html">Quiénes somos</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+            <li><a href="busqueda.html">Búsqueda</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1>Nuestra Identidad</h1>
+        <p style="text-align: center; font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px;">
+            Impulsando la frontera digital con soluciones de hardware premium.
+        </p>
+
+        <div id="extraInfo" style="display:none;">
+            <div class="grid-info">
+                <div class="info-box">
+                    <h3>Misión</h3>
+                    <p>Proveer tecnología de vanguardia que potencie la creatividad y productividad de nuestros usuarios.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Visión</h3>
+                    <p>Convertirnos en el referente número uno de componentes tecnológicos a nivel nacional.</p>
+                </div>
+            </div>
+
+            <h3>Equipo de Desarrollo</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Contacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cesar Yael Toledo Velasquez</td><td>Ing. Sistemas</td><td>cesartoleso513@gmail.com</td></tr>
+                    <tr><td>Lourdes Alondra De Los Santos Molina</td><td>Ing. Sistemas</td><td>Alondra@gmail.com</td></tr>
+                    <tr><td>Erick Leonardo Morales Ruiz</td><td>Ing. Sistemas</td><td>Leonardo@gmail.com</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <button id="btnVerMas" class="btn-accion">Descubrir Más</button>
+    </main>
+
+    <script>
+        // Lógica del botón integrada para evitar errores
+        const btn = document.getElementById('btnVerMas');
+        const info = document.getElementById('extraInfo');
+
+        btn.addEventListener('click', () => {
+            if (info.style.display === 'none') {
+                info.style.display = 'block';
+                btn.textContent = 'Ver menos';
+            } else {
+                info.style.display = 'none';
+                btn.textContent = 'Descubrir Más';
+            }
+        });
+    </script>
+</body>
+</html>
